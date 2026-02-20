@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Ollie Navaratne</title>
+  <style>
+    :root{
+      --bg-1: #0f172a;
+      --bg-2: #0b1220;
+      --accent-a: #7c3aed; /* purple */
+      --accent-b: #06b6d4; /* teal */
+    }
+
+    /* Page reset */
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%}
+
+    /* Full-bleed animated gradient */
+    body{
+      font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      background: linear-gradient(120deg,var(--bg-1),var(--bg-2));
+      min-height:100vh;
+      overflow:hidden;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:#e6eef8;
+    }
+
+    /* Smooth moving gradient overlay */
+    .gradient{
+      position:fixed;inset:0;z-index:0;
+      background: radial-gradient(800px circle at 10% 20%, rgba(124,58,237,0.18), transparent 10%),
+                  radial-gradient(600px circle at 80% 70%, rgba(6,182,212,0.14), transparent 10%);
+      animation: shift 12s linear infinite;
+      pointer-events:none;
+      mix-blend-mode: screen;
+    }
+
+    @keyframes shift{
+      0%{transform:translate3d(0,0,0) rotate(0deg)}
+      50%{transform:translate3d(6%, -4%,0) rotate(1deg)}
+      100%{transform:translate3d(0,0,0) rotate(0deg)}
+    }
+
+    /* Floating soft blobs for depth */
+    .blob{position:fixed;border-radius:50%;filter:blur(60px);opacity:0.55;z-index:0}
+    .blob.a{width:420px;height:420px;left:-8%;top:10%;background:radial-gradient(circle at 30% 30%, rgba(124,58,237,0.9), rgba(124,58,237,0.3));animation: floatA 8s ease-in-out infinite}
+    .blob.b{width:380px;height:380px;right:-6%;bottom:8%;background:radial-gradient(circle at 70% 70%, rgba(6,182,212,0.9), rgba(6,182,212,0.25));animation: floatB 10s ease-in-out infinite}
+    .blob.c{width:260px;height:260px;left:50%;top:-6%;transform:translateX(-50%);background:radial-gradient(circle at 50% 50%, rgba(99,102,241,0.7), rgba(99,102,241,0.18));animation: floatC 7s ease-in-out infinite}
+
+    @keyframes floatA{0%,100%{transform:translateY(0)}50%{transform:translateY(18px)}}
+    @keyframes floatB{0%,100%{transform:translateY(0)}50%{transform:translateY(-22px)}}
+    @keyframes floatC{0%,100%{transform:translateY(0)}50%{transform:translateY(14px)}}
+
+    /* Content card */
+    .card{
+      position:relative;z-index:2;max-width:880px;width:92%;padding:48px;border-radius:16px;
+      background:linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+      box-shadow: 0 10px 30px rgba(2,6,23,0.6), inset 0 1px 0 rgba(255,255,255,0.02);
+      backdrop-filter: blur(6px) saturate(120%);
+      border:1px solid rgba(255,255,255,0.03);
+      text-align:center;
+    }
+
+    h1{font-size:clamp(1.6rem,3.4vw,3rem);margin-bottom:12px}
+    p{color:rgba(230,238,248,0.85);font-size:clamp(1rem,1.6vw,1.25rem)}
+
+    /* small accent line */
+    .accent{
+      height:6px;width:120px;margin:18px auto 28px;border-radius:999px;background:linear-gradient(90deg,var(--accent-a),var(--accent-b));box-shadow:0 6px 30px rgba(6,182,212,0.08)
+    }
+
+    /* Responsive tweaks */
+    @media (max-width:520px){.card{padding:28px;border-radius:12px}}
+  </style>
+</head>
+<body>
+  <div class="gradient" aria-hidden="true"></div>
+  <div class="blob a" aria-hidden="true"></div>
+  <div class="blob b" aria-hidden="true"></div>
+  <div class="blob c" aria-hidden="true"></div>
+
+  <main class="card">
+    <h1>Ollie Navaratne — Ashford School</h1>
+    <div class="accent" aria-hidden="true"></div>
+    <p>Coder Ollie will code better and better as he learns to code.</p>
+  </main>
+
+</body>
+</html>
